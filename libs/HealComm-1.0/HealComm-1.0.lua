@@ -8,7 +8,7 @@ Dependencies: AceLibrary, AceEvent-2.0, RosterLib-2.0
 ]]
 
 local MAJOR_VERSION = "HealComm-1.0"
-local MINOR_VERSION = "$Revision: 11200 $"
+local MINOR_VERSION = "$Revision: 11210 $"
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -776,6 +776,14 @@ HealComm.Spells = {
 			local _,_,_,_,talentRank2,_ = GetTalentInfo(2,15)
 			local shMod = 2*talentRank2/100 + 1
 			return (965*shMod+((3/3.5/3) * (SpellPower+sgMod)))
+		end;
+		[5] = function (SpellPower)
+			local _,_,_,_,talentRank,_ = GetTalentInfo(2,14)
+			local _,Spirit,_,_ = UnitStat("player",5)
+			local sgMod = Spirit * 5*talentRank/100
+			local _,_,_,_,talentRank2,_ = GetTalentInfo(2,15)
+			local shMod = 2*talentRank2/100 + 1
+			return (1070*shMod+((3/3.5/3) * (SpellPower+sgMod)))
 		end;
 	};
 	[L["Healing Touch"]] = {
