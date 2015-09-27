@@ -260,8 +260,7 @@ end
 function strmatch(str, pat, init)
 	local results = {}
 	local s,e,found = string.find(str, pat, init)
-	while found ~= 0 do
-		ChatFrame1:AddMessage(found)
+	while found do
 		tinsert(results,found)
 		s,e,found = string.find(str, pat, e+1)
 	end
