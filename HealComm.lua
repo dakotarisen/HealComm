@@ -44,8 +44,7 @@ local function onEvent(unitname)
 	if UnitName("target") == unitname then
 		onHeal("target")
 	end
-	local unitobj = roster:GetUnitObjectFromName(unitname)
-	local unit = unitobj.unitid
+	local unit = roster:GetUnitIDFromName(unitname)
 	if not unit then
 		return
 	end
